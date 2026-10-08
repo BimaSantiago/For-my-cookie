@@ -20,11 +20,15 @@ export const APODOS = [
   "Corazón",
 ];
 
+/** Su nombre, para el certificado. */
+export const NOMBRE_ELLA = "Marlen";
+
 /**
- * Nombres con los que se puede entrar. No importan mayúsculas, acentos ni espacios extra.
- * "ella" usa la página de verdad; "yo" la ve en modo vista previa (nada de lo que hagas cuenta).
+ * Fechas para entrar (año-mes-día).
+ * "ella" usa la página de verdad. "yo" entra a tu vista: puedes editar cupones y cartas,
+ * y lo que hagas con galletas o el certificado no cuenta para ella.
  */
 export const ACCESOS = {
-  ella: ["galletita", "galletita de mi corazon"],
-  yo: ["abimael"],
-} as const;
+  ella: "2026-05-30",
+  yo: "",
+};

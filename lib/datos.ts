@@ -1,6 +1,8 @@
 import "server-only";
 import { GALLETAS_POR_DIA } from "@/content/config";
 import { GALLETAS } from "@/content/galletas";
+import { CARTAS, type Carta } from "@/content/cartas";
+import { CUPONES, type Cupon } from "@/content/cupones";
 import { db } from "./store";
 import { hoy } from "./fechas";
 
@@ -39,4 +41,15 @@ export async function cartasLeidas() {
 
 export async function certificado() {
   return db().get<Certificado>("certificado");
+}
+
+// Cupones y cartas: los de content/ son los iniciales. Cuando él edita algo desde su vista,
+// la lista completa se guarda en la base y desde ahí se lee.
+
+export async function listaCupones() {
+  return (await db().get<Cupon[]>("lista-cupones")) ?? CUPONES;
+}
+
+export async function listaCartas() {
+  return (await db().get<Carta[]>("lista-cartas")) ?? CARTAS;
 }

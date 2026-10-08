@@ -141,11 +141,28 @@ a,
   transform-box: fill-box;
 }
 .galleta-rota .mitad-izq {
-  transform: translate(-34px, 14px) rotate(-28deg);
+  transform: translate(-30px, 6px) rotate(-7deg);
 }
 .galleta-rota .mitad-der {
-  transform: translate(34px, 14px) rotate(28deg);
+  transform: translate(30px, 6px) rotate(7deg);
 }
+
+/* migajas que saltan al partirla */
+.migajas circle {
+  opacity: 0;
+  transform-box: fill-box;
+}
+@keyframes migaja {
+  0% { opacity: 1; transform: translate(0, 0); }
+  100% { opacity: 0; transform: translate(var(--mx), 40px); }
+}
+.galleta-rota .migajas circle {
+  animation: migaja 700ms cubic-bezier(0.3, 0.6, 0.6, 1) both;
+}
+.migajas circle:nth-child(1) { --mx: -22px; }
+.migajas circle:nth-child(2) { --mx: 18px; animation-delay: 40ms; }
+.migajas circle:nth-child(3) { --mx: -10px; animation-delay: 80ms; }
+.migajas circle:nth-child(4) { --mx: 26px; animation-delay: 20ms; }
 
 @keyframes salir-papel {
   from { opacity: 0; transform: translateY(-24px) scale(0.6, 0.2); }
@@ -279,4 +296,11 @@ a,
 }
 .mitad-der {
   transform-origin: 0% 100%;
+}
+.migajon {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.galleta-rota .migajon {
+  opacity: 1;
 }

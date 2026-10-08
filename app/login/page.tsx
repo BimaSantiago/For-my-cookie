@@ -9,9 +9,9 @@ export default function Login() {
       <h1 className="text-center font-display text-4xl leading-tight font-semibold">
         Esta página es solo para ti
       </h1>
-      <p className="mt-3 text-center text-cacao-suave">Dime cómo te llamo para dejarte pasar.</p>
-      <div className="relative mt-14">
-        <GatoAsomado className="absolute -top-[50px] left-1/2 w-28 -translate-x-1/2" />
+      <p className="mt-3 text-center text-cacao-suave">Para pasar, dime qué día empezó lo nuestro.</p>
+      <div className="relative mt-16">
+        <GatoAsomado className="absolute -top-[58px] left-1/2 z-10 w-28 -translate-x-1/2" />
         <FormularioEntrar />
       </div>
     </main>

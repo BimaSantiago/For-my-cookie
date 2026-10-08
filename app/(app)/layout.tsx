@@ -8,7 +8,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
     <>
       {rol === "yo" && (
         <div className="sticky top-0 z-40 flex items-center justify-between gap-3 bg-cacao px-4 pt-[calc(env(safe-area-inset-top,0px)+0.5rem)] pb-2 text-xs text-papel">
-          <span>Modo vista previa: nada de lo que hagas cuenta para ella.</span>
+          <span>Tu vista: puedes editar cupones y cartas. Galletas y certificado no cuentan para ella.</span>
           <form action={salir}>
             <button className="presionable rounded-full border border-papel/40 px-3 py-1 font-semibold">Salir</button>
           </form>

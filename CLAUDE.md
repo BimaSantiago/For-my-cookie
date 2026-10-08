@@ -17,10 +17,10 @@ There is no test setup in this repo yet.
 
 Mobile-first gift app in Spanish (Next.js 16.2.12, React 19.2, App Router, TypeScript, Tailwind v4). `@/*` maps to the repo root.
 
-- `content/` — editable texts and settings (start date, timezone, login names, cookie messages, letters, coupons). Change content here, not in components.
+- `content/` — editable texts and settings (start date, timezone, login dates, names, cookie messages, default letters and coupons). Change content here, not in components. Letters and coupons are only defaults: once edited from his view, the full lists live in the store (`lista-cartas`, `lista-cupones`) and are read via `listaCartas()`/`listaCupones()` in `lib/datos.ts`.
 - `app/(app)/` — protected pages (inicio, cartas, frasco, cupones, certificado) sharing the tab bar layout; `app/login/` is public.
-- `app/acciones.ts` — all Server Actions. Every mutating action checks the session and skips saving when `rol === "yo"` (the boyfriend's preview mode).
-- `lib/jwt.ts` + `lib/session.ts` — name-only login stored as a signed JWT cookie (`SESSION_SECRET`); `proxy.ts` does the optimistic redirect to `/login`.
+- `app/acciones.ts` — all Server Actions. Her actions (cookies, coupons, letters read, certificate) skip saving when `rol === "yo"` (the boyfriend's view); the editing actions (`guardarCupon`, `borrarCupon`, `guardarCarta`, `borrarCarta`) are the opposite and only work for `rol === "yo"`.
+- `lib/jwt.ts` + `lib/session.ts` — date-only login (`ACCESOS` in `content/config.ts`: anniversary → "ella", another date → "yo") stored as a signed JWT cookie (`SESSION_SECRET`); `proxy.ts` does the optimistic redirect to `/login`.
 - `lib/store.ts` — tiny key/value store: Upstash Redis when `KV_REST_API_URL`/`KV_REST_API_TOKEN` (or `UPSTASH_REDIS_REST_*`) are set, otherwise `.data/db.json` locally (errors on Vercel without Redis).
 - `lib/fechas.ts` — all date math uses `"YYYY-MM-DD"` strings in `ZONA_HORARIA`, never server-local time.
 - Certificate image (`app/(app)/certificado/imagen/route.tsx`) and PWA icons (`lib/icono.tsx`) are generated with `ImageResponse`.

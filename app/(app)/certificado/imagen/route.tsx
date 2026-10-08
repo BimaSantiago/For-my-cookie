@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { INICIO_NOVIOS, MI_NOMBRE } from "@/content/config";
+import { INICIO_NOVIOS, MI_NOMBRE, NOMBRE_ELLA } from "@/content/config";
 import { certificado } from "@/lib/datos";
 import { fechaHoraLarga, fechaLarga } from "@/lib/fechas";
 import { obtenerSesion } from "@/lib/session";
@@ -66,14 +66,15 @@ export async function GET() {
   const titulo = "Certificado de Amor";
   const textos = [
     `Novios desde el ${fechaLarga(INICIO_NOVIOS)}`,
-    "Por medio de la presente se certifica que la galletita de mi corazón y yo quedamos oficialmente unidos.",
+    `Por medio de la presente se certifica que ${NOMBRE_ELLA}, la galletita de mi corazón, y ${MI_NOMBRE} quedan oficialmente unidos.`,
     "Prometo cuidarte, hacerte reír, quererte en los días buenos y en los no tan buenos, y compartir contigo cada galleta, incluso la última.",
     `Con amor, ${MI_NOMBRE}`,
     `Sellado el ${fechaHoraLarga(sello.selladoEn)}`,
-    "Tu huella Testigo: un michi",
+    `Huella de ${NOMBRE_ELLA} Testigo: un michi`,
+    `${NOMBRE_ELLA} & ${MI_NOMBRE}`,
   ];
   const [firmaFuente, cuerpo, cuerpoNegrita] = await Promise.all([
-    fuente("Great Vibes", 400, titulo + textos[3]),
+    fuente("Great Vibes", 400, titulo + textos[3] + textos[6]),
     fuente("Nunito", 400, textos.join(" ")),
     fuente("Nunito", 700, textos.join(" ")),
   ]);
@@ -120,7 +121,10 @@ export async function GET() {
             <div style={{ display: "flex", fontFamily: "Great Vibes", fontSize: 110, color: rosa, lineHeight: 1 }}>
               {palabras(titulo, 26)}
             </div>
-            <div style={{ marginTop: 14, fontSize: 28, fontWeight: 700, color: "#8a6157" }}>{textos[0]}</div>
+            <div style={{ marginTop: 22, display: "flex", fontFamily: "Great Vibes", fontSize: 72, color: "#7a4069", lineHeight: 1 }}>
+              {palabras(textos[6], 18)}
+            </div>
+            <div style={{ marginTop: 18, fontSize: 28, fontWeight: 700, color: "#8a6157" }}>{textos[0]}</div>
             <div style={{ marginTop: 44, fontSize: 36, lineHeight: 1.5 }}>{textos[1]}</div>
             <div style={{ marginTop: 22, fontSize: 36, lineHeight: 1.5 }}>{textos[2]}</div>
             <div style={{ marginTop: 50, display: "flex", gap: 70 }}>
@@ -139,7 +143,7 @@ export async function GET() {
                 >
                   {huella("#b10077cc")}
                 </div>
-                <div style={{ marginTop: 10, fontSize: 24, color: "#7a4069" }}>Tu huella</div>
+                <div style={{ marginTop: 10, fontSize: 24, color: "#7a4069" }}>{`Huella de ${NOMBRE_ELLA}`}</div>
               </div>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <div

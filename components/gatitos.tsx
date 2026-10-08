@@ -99,7 +99,7 @@ export function GatoSentado({ className }: Props) {
 /** Michi asomándose por un borde, con las patitas por delante. */
 export function GatoAsomado({ className }: Props) {
   return (
-    <svg viewBox="0 0 120 64" className={className} aria-hidden="true">
+    <svg viewBox="0 0 120 70" className={className} aria-hidden="true">
       <path d="M30 30 L32 4 L52 18 Z" fill={PELO} />
       <path d="M34 24 L35 11 L45 18 Z" fill={OREJA} />
       <path d="M90 30 L88 4 L68 18 Z" fill={PELO} />

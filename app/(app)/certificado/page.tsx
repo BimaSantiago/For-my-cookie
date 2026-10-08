@@ -1,4 +1,4 @@
-import { INICIO_NOVIOS, MI_NOMBRE } from "@/content/config";
+import { INICIO_NOVIOS, MI_NOMBRE, NOMBRE_ELLA } from "@/content/config";
 import { certificado } from "@/lib/datos";
 import { fechaLarga } from "@/lib/fechas";
 import { exigirSesion } from "@/lib/session";
@@ -15,6 +15,7 @@ export default async function CertificadoPage() {
       selladoEnInicial={sello?.selladoEn ?? null}
       novioDesde={fechaLarga(INICIO_NOVIOS)}
       firma={MI_NOMBRE}
+      ella={NOMBRE_ELLA}
       vistaPrevia={rol === "yo"}
     />
   );

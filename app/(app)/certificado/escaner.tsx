@@ -15,11 +15,13 @@ export function Escaner({
   selladoEnInicial,
   novioDesde,
   firma,
+  ella,
   vistaPrevia,
 }: {
   selladoEnInicial: string | null;
   novioDesde: string;
   firma: string;
+  ella: string;
   vistaPrevia: boolean;
 }) {
   const [selladoEn, setSelladoEn] = useState(selladoEnInicial);
@@ -71,7 +73,7 @@ export function Escaner({
           </>
         )}
         <div className={celebrar ? "cert-aparece" : ""}>
-          <Certificado selladoEn={fechaHoraLarga(selladoEn)} novioDesde={novioDesde} firma={firma} />
+          <Certificado selladoEn={fechaHoraLarga(selladoEn)} novioDesde={novioDesde} firma={firma} ella={ella} />
         </div>
         {aviso && <p className="mt-4 text-center text-sm font-semibold text-chicle">{aviso}</p>}
         {!aviso && (
