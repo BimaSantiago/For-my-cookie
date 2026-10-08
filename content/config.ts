@@ -30,5 +30,5 @@ export const NOMBRE_ELLA = "Marlen";
  */
 export const ACCESOS = {
   ella: "2026-05-30",
-  yo: "",
+  yo: "2009-06-23",
 };
