@@ -5,16 +5,20 @@ const RAYAS = "#d9823a";
 const OREJA = "#ffb3c7";
 const LINEA = "#4a2a22";
 const CACHETE = "#ff8fab";
+const HOCICO = "#fde6cc";
 
 type Props = { className?: string };
 
-function Bigotes({ x, y }: { x: number; y: number }) {
+/** `separacion`: qué tan lejos de la nariz empiezan los bigotes. */
+function Bigotes({ x, y, separacion = 9 }: { x: number; y: number; separacion?: number }) {
+  const s = separacion;
+  const l = s + 13;
   return (
     <g stroke={LINEA} strokeWidth="1.2" strokeLinecap="round" opacity="0.55">
-      <path d={`M${x - 9} ${y} L${x - 22} ${y - 3}`} />
-      <path d={`M${x - 9} ${y + 3} L${x - 22} ${y + 5}`} />
-      <path d={`M${x + 9} ${y} L${x + 22} ${y - 3}`} />
-      <path d={`M${x + 9} ${y + 3} L${x + 22} ${y + 5}`} />
+      <path d={`M${x - s} ${y} L${x - l} ${y - 3}`} />
+      <path d={`M${x - s} ${y + 3} L${x - l} ${y + 5}`} />
+      <path d={`M${x + s} ${y} L${x + l} ${y - 3}`} />
+      <path d={`M${x + s} ${y + 3} L${x + l} ${y + 5}`} />
     </g>
   );
 }
@@ -100,24 +104,29 @@ export function GatoSentado({ className }: Props) {
 export function GatoAsomado({ className }: Props) {
   return (
     <svg viewBox="0 0 120 70" className={className} aria-hidden="true">
-      <path d="M30 30 L32 4 L52 18 Z" fill={PELO} />
-      <path d="M34 24 L35 11 L45 18 Z" fill={OREJA} />
-      <path d="M90 30 L88 4 L68 18 Z" fill={PELO} />
-      <path d="M86 24 L85 11 L75 18 Z" fill={OREJA} />
-      <path d="M28 64 C 28 30, 44 14, 60 14 C 76 14, 92 30, 92 64 Z" fill={PELO} />
-      <path d="M56 16 l1 7 M64 16 l-1 7" stroke={RAYAS} strokeWidth="3" strokeLinecap="round" />
+      {/* orejas anchas y separadas; la cabeza es más ancha que alta para que no parezca ratón */}
+      <path d="M22 40 L26 4 L54 22 Z" fill={PELO} />
+      <path d="M28 30 L30 12 L45 22 Z" fill={OREJA} />
+      <path d="M98 40 L94 4 L66 22 Z" fill={PELO} />
+      <path d="M92 30 L90 12 L75 22 Z" fill={OREJA} />
+      <path d="M18 66 C 16 36, 34 18, 60 18 C 86 18, 104 36, 102 66 Z" fill={PELO} />
+      <path d="M55 20 l1 7 M60 19 v8 M65 20 l-1 7" stroke={RAYAS} strokeWidth="3" strokeLinecap="round" />
       <g className="ojo">
-        <ellipse cx="48" cy="38" rx="4.2" ry="5.2" fill={LINEA} />
-        <circle cx="49.5" cy="36" r="1.5" fill="#fff" />
+        <ellipse cx="44" cy="39" rx="5.5" ry="6.5" fill={LINEA} />
+        <circle cx="46" cy="36.5" r="2" fill="#fff" />
       </g>
       <g className="ojo">
-        <ellipse cx="72" cy="38" rx="4.2" ry="5.2" fill={LINEA} />
-        <circle cx="73.5" cy="36" r="1.5" fill="#fff" />
+        <ellipse cx="76" cy="39" rx="5.5" ry="6.5" fill={LINEA} />
+        <circle cx="78" cy="36.5" r="2" fill="#fff" />
       </g>
-      <ellipse cx="40" cy="47" rx="5" ry="3" fill={CACHETE} opacity="0.6" />
-      <ellipse cx="80" cy="47" rx="5" ry="3" fill={CACHETE} opacity="0.6" />
-      <path d="M57.5 45 h5 l-2.5 3 z" fill={CACHETE} />
-      <Bigotes x={60} y={48} />
+      {/* hocico clarito con boquita de gato */}
+      <ellipse cx="54" cy="50" rx="7.5" ry="5.5" fill={HOCICO} />
+      <ellipse cx="66" cy="50" rx="7.5" ry="5.5" fill={HOCICO} />
+      <ellipse cx="33" cy="49" rx="5.5" ry="3.2" fill={CACHETE} opacity="0.6" />
+      <ellipse cx="87" cy="49" rx="5.5" ry="3.2" fill={CACHETE} opacity="0.6" />
+      <path d="M57 45 h6 l-3 3.5 z" fill={CACHETE} />
+      <path d="M60 48.5 q-2.5 4 -5.5 1.5 M60 48.5 q2.5 4 5.5 1.5" stroke={LINEA} strokeWidth="1.4" fill="none" strokeLinecap="round" />
+      <Bigotes x={60} y={49} separacion={15} />
       <ellipse cx="38" cy="60" rx="11" ry="7" fill={PELO} stroke={RAYAS} strokeWidth="1" />
       <ellipse cx="82" cy="60" rx="11" ry="7" fill={PELO} stroke={RAYAS} strokeWidth="1" />
       <path d="M34 57 v4 M38 56 v5 M42 57 v4 M78 57 v4 M82 56 v5 M86 57 v4" stroke={RAYAS} strokeWidth="1.2" strokeLinecap="round" />
