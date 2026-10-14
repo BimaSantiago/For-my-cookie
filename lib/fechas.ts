@@ -1,4 +1,4 @@
-import { INICIO_NOVIOS, ZONA_HORARIA } from "@/content/config";
+import { HORA_DESPERTAR, HORA_DORMIR, INICIO_NOVIOS, ZONA_HORARIA } from "@/content/config";
 
 /** Fechas como texto "año-mes-día", siempre en la zona horaria configurada. */
 export type Dia = string;
@@ -14,6 +14,12 @@ export function horaLocal(ahora = new Date()) {
     hourCycle: "h23",
   }).format(ahora);
   return Number(hora);
+}
+
+/** Hora de dormir del michi: de HORA_DORMIR hasta antes de HORA_DESPERTAR. */
+export function esHoraDeDormir(ahora = new Date()) {
+  const hora = horaLocal(ahora);
+  return hora >= HORA_DORMIR || hora < HORA_DESPERTAR;
 }
 
 function aUTC(dia: Dia) {

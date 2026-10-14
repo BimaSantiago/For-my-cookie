@@ -122,6 +122,105 @@ a,
   animation: asomar 600ms var(--ease-salto) both;
 }
 
+/* Michi jugando: levanta la patita, le pega a la bola y la bola rueda y regresa. */
+@keyframes pata-juega {
+  0%, 55%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(32deg); }
+  38% { transform: rotate(-4deg); }
+}
+.pata-juega {
+  transform-box: fill-box;
+  transform-origin: 100% 50%;
+  animation: pata-juega 2.2s ease-in-out infinite;
+}
+
+@keyframes estambre {
+  0%, 38% { transform: translateX(0) rotate(0deg); }
+  58% { transform: translateX(-12px) rotate(-140deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+.estambre {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: estambre 2.2s var(--ease-out-suave) infinite;
+}
+
+/* Michi enojado: se sacude de coraje y la venita late. */
+@keyframes enojo {
+  0%, 70%, 100% { transform: rotate(0deg); }
+  76% { transform: rotate(-5deg); }
+  84% { transform: rotate(5deg); }
+  92% { transform: rotate(-3deg); }
+}
+.enojo {
+  animation: enojo 2.6s ease-in-out infinite;
+}
+
+@keyframes vena {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+.vena {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: vena 1s ease-in-out infinite;
+}
+
+@keyframes globo-entra {
+  from { opacity: 0; transform: translateY(6px) scale(0.95); }
+  to { opacity: 1; transform: none; }
+}
+.globo-entra {
+  transform-origin: 100% 100%;
+  animation: globo-entra 260ms var(--ease-out-suave) both;
+}
+
+/* ---------- Medusas del inicio ---------- */
+/* Suben de abajo hacia arriba sin parar; el retraso negativo hace que ya estén a medio camino al abrir. */
+@keyframes medusa-viaje {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-100%); }
+}
+.medusa-viaje {
+  position: absolute;
+  top: 0;
+  will-change: transform;
+  animation: medusa-viaje linear infinite;
+}
+
+@keyframes medusa-vaiven {
+  from { transform: translateX(-10px) rotate(-5deg); }
+  to { transform: translateX(10px) rotate(5deg); }
+}
+.medusa-vaiven {
+  animation: medusa-vaiven ease-in-out infinite alternate;
+}
+
+/* Se aprieta rápido (impulso) y se relaja despacio, como una medusa de verdad. */
+@keyframes medusa-pulso {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  30% { transform: translateY(-3px) scale(0.9, 1.06); }
+  60% { transform: translateY(-1px) scale(1.04, 0.97); }
+}
+.medusa-pulso {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: medusa-pulso var(--pulso, 2.8s) ease-in-out infinite;
+}
+
+@keyframes medusa-tentaculo {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
+.medusa-tentaculo {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: medusa-tentaculo var(--pulso, 2.8s) ease-in-out infinite;
+}
+.medusa-tentaculo-2 { animation-delay: calc(var(--pulso, 2.8s) * -0.2); }
+.medusa-tentaculo-3 { animation-delay: calc(var(--pulso, 2.8s) * -0.4); }
+.medusa-tentaculo-4 { animation-delay: calc(var(--pulso, 2.8s) * -0.6); }
+
 /* ---------- Galleta de la fortuna ---------- */
 @keyframes temblar {
   0%, 100% { transform: rotate(0); }
@@ -285,6 +384,14 @@ a,
   .confeti,
   .sube {
     display: none;
+  }
+  /* las medusas se quedan quietas en su lugar en vez de desaparecer */
+  .medusa-viaje,
+  .medusa-vaiven {
+    animation: none;
+  }
+  .medusa-viaje {
+    transform: translateY(var(--reposo));
   }
 }
 

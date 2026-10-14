@@ -6,6 +6,12 @@ export const INICIO_NOVIOS = "2026-05-30";
 /** Zona horaria con la que se cuentan los días y se reinician las galletas. */
 export const ZONA_HORARIA = "America/Mexico_City";
 
+/** A qué hora (0–23) se duerme el michi del inicio y la regaña por estar despierta. */
+export const HORA_DORMIR = 20;
+
+/** A qué hora (0–23) se despierta el michi y se pone a jugar. */
+export const HORA_DESPERTAR = 6;
+
 /** Cuántas galletas de la fortuna puede abrir al día. */
 export const GALLETAS_POR_DIA = 2;
 
